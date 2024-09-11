@@ -22,6 +22,7 @@ struct CounterFeature {
     enum Action {
         case increment
         case decrement
+        case reset
     }
     
     var body: some Reducer<State, Action> {
@@ -32,6 +33,9 @@ struct CounterFeature {
                 return .none
             case .increment:
                 state.count += 1
+                return .none
+            case .reset:
+                state.count = 0
                 return .none
             }
         }

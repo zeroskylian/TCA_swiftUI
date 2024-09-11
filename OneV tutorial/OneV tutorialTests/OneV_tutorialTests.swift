@@ -23,6 +23,8 @@ final class OneV_tutorialTests: XCTestCase {
         await store.send(.decrement) { state in
             state.count -= 1
         }
+        
+        await store.send(.reset)
       }
 
     override func setUpWithError() throws {

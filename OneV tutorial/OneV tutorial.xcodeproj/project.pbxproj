@@ -17,6 +17,7 @@
 		8C2EB7C02C913A0A005E8207 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 8C2EB7BF2C913A0A005E8207 /* ComposableArchitecture */; };
 		8C2EB7C72C913BFD005E8207 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7C62C913BFD005E8207 /* CounterFeature.swift */; };
 		8C2EB7C92C913C58005E8207 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7C82C913C58005E8207 /* CounterView.swift */; };
+		8C2EB7CA2C914080005E8207 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7C62C913BFD005E8207 /* CounterFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C2EB7702C913898005E8207 /* OneV_tutorialTests.swift in Sources */,
+				8C2EB7CA2C914080005E8207 /* CounterFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
