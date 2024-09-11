@@ -17,12 +17,32 @@ struct CounterFeature {
         let name: String = "Counter"
         
         var count: Int = 0
+        
+        var secret = Int.random(in: -100 ... 100)
+        
+        var countString: String {
+            get {
+                return String(count)
+            }
+            set {
+                if let count = Int(newValue) {
+                    self.count = count
+                }
+            }
+        }
+        
+        var checkResult: CheckResult {
+            if count < secret { return .lower }
+            if count > secret { return .higher }
+            return .equal
+        }
     }
     
     enum Action {
         case increment
         case decrement
-        case reset
+        case setCount(String)
+        case playNext
     }
     
     var body: some Reducer<State, Action> {
@@ -34,13 +54,25 @@ struct CounterFeature {
             case .increment:
                 state.count += 1
                 return .none
-            case .reset:
+            case .playNext:
                 state.count = 0
+                state.secret = Int.random(in: -100 ... 100)
+                return .none
+            case .setCount(let countString):
+                state.countString = countString
                 return .none
             }
         }
     }
+    
+    enum CheckResult {
+        case lower, equal, higher
+    }
 }
 
-struct CounterEnvironment {}
+struct CounterEnvironment {
+    var generateRandom: (ClosedRange<Int>) -> Int
+    
+    static let live = CounterEnvironment(generateRandom: Int.random(in:))
+}
 

@@ -10,10 +10,10 @@ import ComposableArchitecture
 
 struct ContentView: View {
     
-    static let store = Store(initialState: CounterFeature.State()) {
+    static let store = Store(initialState: CounterFeature.State(), reducer: {
         CounterFeature()
             ._printChanges()
-    }
+    })
     
     var body: some View {
         VStack {

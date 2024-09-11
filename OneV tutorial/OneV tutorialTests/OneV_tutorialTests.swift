@@ -10,10 +10,11 @@ import XCTest
 import ComposableArchitecture
 
 final class OneV_tutorialTests: XCTestCase {
+   
     
-    func testCounter() async {
+    func testCounter() async  {
         let store = await TestStore(initialState: CounterFeature.State()) {
-          CounterFeature()
+            CounterFeature()
         }
         
         await store.send(.increment) { state in
@@ -24,17 +25,25 @@ final class OneV_tutorialTests: XCTestCase {
             state.count -= 1
         }
         
-        await store.send(.reset)
-      }
-
+        await store.send(.playNext)
+    }
+    
+    func testPlayNext() async {
+        let store = await TestStore(initialState: CounterFeature.State(), reducer: {
+            CounterFeature()
+        })
+        
+        await store.send(.playNext)
+    }
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -42,12 +51,12 @@ final class OneV_tutorialTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
-
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
 }
