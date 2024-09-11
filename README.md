@@ -13,3 +13,7 @@ TCA 架构的 SwiftUI demo
 其中项目的 OneV tutorial 为按照喵大的教程写的 demo, 但是其中架构较旧, 代码是适配了最新的代码的
 
 Official tutorial 为官方教程
+
+# 思考
+
+个人理解 TCA 就是 Swift 版本的 Redux, 其中思想高度相似, 都是 **View** -> Dispatch **Action** -> **Store** -> **Reducer** Update State -> **Store** -> View

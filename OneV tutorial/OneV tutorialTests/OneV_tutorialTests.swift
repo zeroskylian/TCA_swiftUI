@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import OneV_tutorial
+import ComposableArchitecture
 
 final class OneV_tutorialTests: XCTestCase {
 
