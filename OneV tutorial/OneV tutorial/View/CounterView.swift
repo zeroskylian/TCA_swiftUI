@@ -22,6 +22,7 @@ struct CounterView: View {
                 TextField(store.countString, text: $store.countString.sending(\.setCount)).frame(width: 40).multilineTextAlignment(.center)
                 Button("+") { store.send(.increment)}
             }
+            Slider(value: $store.doubleValue.sending(\.setDouble), in: -100 ... 100).frame(width: 200)
             Button("PlayNext") { store.send(.playNext)}
         }
     }

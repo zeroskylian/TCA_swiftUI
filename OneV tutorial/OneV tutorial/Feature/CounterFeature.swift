@@ -31,6 +31,15 @@ struct CounterFeature {
             }
         }
         
+        var doubleValue: Double {
+            get {
+                return Double(count)
+            }
+            set {
+                count = Int(newValue)
+            }
+        }
+        
         var checkResult: CheckResult {
             if count < secret { return .lower }
             if count > secret { return .higher }
@@ -42,6 +51,7 @@ struct CounterFeature {
         case increment
         case decrement
         case setCount(String)
+        case setDouble(Double)
         case playNext
     }
     
@@ -60,6 +70,9 @@ struct CounterFeature {
                 return .none
             case .setCount(let countString):
                 state.countString = countString
+                return .none
+            case .setDouble(let value):
+                state.doubleValue = value
                 return .none
             }
         }
