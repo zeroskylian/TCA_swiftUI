@@ -15,6 +15,8 @@
 		8C2EB77A2C913898005E8207 /* OneV_tutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7792C913898005E8207 /* OneV_tutorialUITests.swift */; };
 		8C2EB77C2C913898005E8207 /* OneV_tutorialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB77B2C913898005E8207 /* OneV_tutorialUITestsLaunchTests.swift */; };
 		8C2EB7C02C913A0A005E8207 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 8C2EB7BF2C913A0A005E8207 /* ComposableArchitecture */; };
+		8C2EB7C72C913BFD005E8207 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7C62C913BFD005E8207 /* CounterFeature.swift */; };
+		8C2EB7C92C913C58005E8207 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7C82C913C58005E8207 /* CounterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		8C2EB7752C913898005E8207 /* OneV tutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OneV tutorialUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2EB7792C913898005E8207 /* OneV_tutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneV_tutorialUITests.swift; sourceTree = "<group>"; };
 		8C2EB77B2C913898005E8207 /* OneV_tutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneV_tutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8C2EB7C62C913BFD005E8207 /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
+		8C2EB7C82C913C58005E8207 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,7 @@
 		8C2EB7C12C913A27005E8207 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				8C2EB7C62C913BFD005E8207 /* CounterFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 		8C2EB7C22C913A2D005E8207 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8C2EB7C82C913C58005E8207 /* CounterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,8 +287,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C2EB7C72C913BFD005E8207 /* CounterFeature.swift in Sources */,
 				8C2EB7612C913897005E8207 /* ContentView.swift in Sources */,
 				8C2EB75F2C913897005E8207 /* OneV_tutorialApp.swift in Sources */,
+				8C2EB7C92C913C58005E8207 /* CounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

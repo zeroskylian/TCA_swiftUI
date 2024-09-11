@@ -10,6 +10,20 @@ import XCTest
 import ComposableArchitecture
 
 final class OneV_tutorialTests: XCTestCase {
+    
+    func testCounter() async {
+        let store = await TestStore(initialState: CounterFeature.State()) {
+          CounterFeature()
+        }
+        
+        await store.send(.increment) { state in
+            state.count += 1
+        }
+        
+        await store.send(.decrement) { state in
+            state.count -= 1
+        }
+      }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
