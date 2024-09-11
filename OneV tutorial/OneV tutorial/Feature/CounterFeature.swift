@@ -18,7 +18,7 @@ struct CounterFeature {
         
         var count: Int = 0
         
-        var secret = Int.random(in: -100 ... 100)
+        var secret = CounterEnvironment.live.value
         
         var countString: String {
             get {
@@ -56,7 +56,7 @@ struct CounterFeature {
                 return .none
             case .playNext:
                 state.count = 0
-                state.secret = Int.random(in: -100 ... 100)
+                state.secret = self.randomValue.value
                 return .none
             case .setCount(let countString):
                 state.countString = countString
@@ -68,11 +68,25 @@ struct CounterFeature {
     enum CheckResult {
         case lower, equal, higher
     }
-}
-
-struct CounterEnvironment {
-    var generateRandom: (ClosedRange<Int>) -> Int
     
-    static let live = CounterEnvironment(generateRandom: Int.random(in:))
+    @Dependency(\.counterEnvironment) var randomValue
 }
 
+struct CounterEnvironment: DependencyKey {
+    
+    static let liveValue = Self.init(value: Int.random(in: -100 ... 100))
+    
+    let value: Int
+    
+    static let live = CounterEnvironment(value: Int.random(in: -100 ... 100))
+    
+    static let test = CounterEnvironment(value: 5)
+}
+
+extension DependencyValues {
+    
+    var counterEnvironment: CounterEnvironment {
+        get { self[CounterEnvironment.self] }
+        set { self[CounterEnvironment.self] = newValue }
+    }
+}

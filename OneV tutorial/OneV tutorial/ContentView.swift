@@ -13,7 +13,9 @@ struct ContentView: View {
     static let store = Store(initialState: CounterFeature.State(), reducer: {
         CounterFeature()
             ._printChanges()
-    })
+    }) {
+        $0.counterEnvironment = .live
+    }
     
     var body: some View {
         VStack {

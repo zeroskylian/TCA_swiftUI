@@ -29,10 +29,28 @@ final class OneV_tutorialTests: XCTestCase {
     }
     
     func testPlayNext() async {
-        let store = await TestStore(initialState: CounterFeature.State(), reducer: {
+        let store = await TestStore(initialState: CounterFeature.State(secret: CounterEnvironment.test.value), reducer: {
             CounterFeature()
-        })
+        }) {
+            $0.counterEnvironment = .test
+        }
         
+        /**
+         failed - State was not expected to change, but a change occurred: …
+
+               CounterFeature.State(
+                 name: "Counter",
+                 _count: 0,
+             −   _secret: 22
+             +   _secret: 5
+               )
+
+         (Expected: −, Actual: +)
+         */
+        
+        /**
+         因为 .playNext 现在不仅重置 count，也会随机生成新的 secret。而 TestStore 会把 send 闭包结束时的 state 和真正的由 reducer 操作的 state 进行比较并断言：前者没有设置合适的 secret，导致它们并不相等，所以测试失败了。
+         */
         await store.send(.playNext)
     }
     
