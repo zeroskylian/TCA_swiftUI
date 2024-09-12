@@ -59,14 +59,14 @@ final class OneV_tutorialTests: XCTestCase {
         
         /**
          failed - State was not expected to change, but a change occurred: …
-
-               CounterFeature.State(
-                 name: "Counter",
-                 _count: 0,
-             −   _secret: 22
-             +   _secret: 5
-               )
-
+         
+           CounterFeature.State(
+             name: "Counter",
+             _count: 0,
+         −   _secret: 22
+         +   _secret: 5
+           )
+         
          (Expected: −, Actual: +)
          */
         
@@ -86,5 +86,37 @@ final class OneV_tutorialTests: XCTestCase {
         await store.send(.setDouble(4.2)) {
             $0.count = 4
         }
+    }
+    
+    // https://onevcat.com/2022/03/tca-3/
+    
+    let scheduler = DispatchQueue.test
+    
+    func testTimer() async {
+        let store = await TestStore.init(initialState: TimerFeature.State(), reducer: {
+            TimerFeature()
+        }) {
+            $0.timerEnvironment = TimerEnvironment.test
+            $0.mainQueue = .main
+        }
+        
+        await store.send(.start) {
+          $0.started = Date(timeIntervalSince1970: 100)
+        }
+        
+        // 1
+        await scheduler.advance(by: .milliseconds(35))
+        // 2
+        await store.receive(.timeUpdated) {
+          $0.duration = 0.01
+        }
+        await store.receive(.timeUpdated) {
+          $0.duration = 0.02
+        }
+        await store.receive(.timeUpdated) {
+          $0.duration = 0.03
+        }
+        // 3
+        await store.send(.stop)
     }
 }

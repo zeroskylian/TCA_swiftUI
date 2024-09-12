@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C187EF22C92D53D001E90C9 /* TimerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC469582C92BDAF00D3884E /* TimerFeature.swift */; };
 		8C2EB75F2C913897005E8207 /* OneV_tutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB75E2C913897005E8207 /* OneV_tutorialApp.swift */; };
 		8C2EB7612C913897005E8207 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7602C913897005E8207 /* ContentView.swift */; };
 		8C2EB7632C913898005E8207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2EB7622C913898005E8207 /* Assets.xcassets */; };
@@ -307,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C187EF22C92D53D001E90C9 /* TimerFeature.swift in Sources */,
 				8C2EB7702C913898005E8207 /* OneV_tutorialTests.swift in Sources */,
 				8C2EB7CA2C914080005E8207 /* CounterFeature.swift in Sources */,
 			);

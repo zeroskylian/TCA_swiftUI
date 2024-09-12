@@ -60,6 +60,12 @@ struct TimerEnvironment: DependencyKey {
     static var liveValue: TimerEnvironment {
         return .init(date: Date.init, mainQueue: .main)
     }
+    
+    static var test: TimerEnvironment {
+        return .init(date: {
+            return Date(timeIntervalSince1970: 100)
+        }, mainQueue: .main)
+    }
      
     var date: () -> Date
     
