@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct TimerView: View {
     
-    @Bindable var store: StoreOf<TimerFeature>
+    let store: StoreOf<TimerFeature>
     
     var body: some View {
         VStack(alignment: .leading) {

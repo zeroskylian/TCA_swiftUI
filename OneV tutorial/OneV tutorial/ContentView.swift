@@ -24,10 +24,18 @@ struct ContentView: View {
         $0.timerEnvironment = .liveValue
     }
     
+    static let networkStore = Store(initialState: NetworkSampleFeature.State(loading: false, text: ""), reducer: {
+        NetworkSampleFeature()
+            ._printChanges()
+    }) {
+        $0.networkSample = .liveValue
+    }
+    
     var body: some View {
         VStack {
             TimerView(store: Self.timerStore)
             CounterView(store: Self.counterStore)
+            NetworkSampleView(store: Self.networkStore)
         }
     }
 }

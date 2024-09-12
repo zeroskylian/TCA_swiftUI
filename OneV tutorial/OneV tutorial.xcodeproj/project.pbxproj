@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C187EF22C92D53D001E90C9 /* TimerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC469582C92BDAF00D3884E /* TimerFeature.swift */; };
+		8C187EF42C92D82D001E90C9 /* NetworkSampleFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C187EF32C92D82D001E90C9 /* NetworkSampleFeature.swift */; };
+		8C187EF62C92E634001E90C9 /* NetworkSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C187EF52C92E634001E90C9 /* NetworkSampleView.swift */; };
 		8C2EB75F2C913897005E8207 /* OneV_tutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB75E2C913897005E8207 /* OneV_tutorialApp.swift */; };
 		8C2EB7612C913897005E8207 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7602C913897005E8207 /* ContentView.swift */; };
 		8C2EB7632C913898005E8207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2EB7622C913898005E8207 /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C187EF32C92D82D001E90C9 /* NetworkSampleFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSampleFeature.swift; sourceTree = "<group>"; };
+		8C187EF52C92E634001E90C9 /* NetworkSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSampleView.swift; sourceTree = "<group>"; };
 		8C2EB75B2C913897005E8207 /* OneV tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OneV tutorial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2EB75E2C913897005E8207 /* OneV_tutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneV_tutorialApp.swift; sourceTree = "<group>"; };
 		8C2EB7602C913897005E8207 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			children = (
 				8C2EB7C62C913BFD005E8207 /* CounterFeature.swift */,
 				8CC469582C92BDAF00D3884E /* TimerFeature.swift */,
+				8C187EF32C92D82D001E90C9 /* NetworkSampleFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 			children = (
 				8C2EB7C82C913C58005E8207 /* CounterView.swift */,
 				8CC4695A2C92C62900D3884E /* TimerView.swift */,
+				8C187EF52C92E634001E90C9 /* NetworkSampleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -296,7 +302,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CC4695B2C92C62900D3884E /* TimerView.swift in Sources */,
+				8C187EF62C92E634001E90C9 /* NetworkSampleView.swift in Sources */,
 				8C2EB7C72C913BFD005E8207 /* CounterFeature.swift in Sources */,
+				8C187EF42C92D82D001E90C9 /* NetworkSampleFeature.swift in Sources */,
 				8C2EB7612C913897005E8207 /* ContentView.swift in Sources */,
 				8C2EB75F2C913897005E8207 /* OneV_tutorialApp.swift in Sources */,
 				8CC469592C92BDAF00D3884E /* TimerFeature.swift in Sources */,
