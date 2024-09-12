@@ -119,4 +119,23 @@ final class OneV_tutorialTests: XCTestCase {
         // 3
         await store.send(.stop)
     }
+    
+    func testNetwork() async {
+        let store = await TestStore(initialState: NetworkSampleFeature.State(loading: false, text: ""), reducer: {
+            NetworkSampleFeature()
+        }) {
+            $0.networkSample = .liveValue
+        }
+        await store.send(.load) { state in
+            state.loading = true
+            state.text = ""
+        }
+        
+        await scheduler.advance()
+        
+        await store.receive(\.loaded, timeout: .seconds(2)) { state in
+            state.loading = false
+            state.text = "Hello World"
+        }
+    }
 }

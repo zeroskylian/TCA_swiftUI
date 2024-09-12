@@ -30,11 +30,13 @@ struct NetworkSampleFeature {
         Reduce { state, action in
             switch action {
             case .load:
+                state.loading = true
                 return .run { send in
                     let result = await networkSample.loadText()
                     await send(.loaded(result))
                 }
             case .loaded(let result):
+                state.loading = false
                 do {
                     state.text = try result.get()
                 } catch {
