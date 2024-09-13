@@ -73,7 +73,7 @@ struct NetworkSampleFeatureEnvironment: DependencyKey {
         mainQueue: .main
     )
     
-    static let test: NetworkSampleFeatureEnvironment = NetworkSampleFeatureEnvironment(
+    static let testValue: NetworkSampleFeatureEnvironment = NetworkSampleFeatureEnvironment(
         loadText: {
             do {
                 try await Task.sleep(for: .seconds(1))

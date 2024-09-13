@@ -93,7 +93,7 @@ struct CounterEnvironment: DependencyKey {
     
     static let live = CounterEnvironment(value: Int.random(in: -100 ... 100))
     
-    static let test = CounterEnvironment(value: 5)
+    static let testValue: CounterEnvironment = CounterEnvironment(value: 5)
 }
 
 extension DependencyValues {

@@ -61,7 +61,7 @@ struct TimerEnvironment: DependencyKey {
         return .init(date: Date.init, mainQueue: .main)
     }
     
-    static var test: TimerEnvironment {
+    static var testValue: TimerEnvironment {
         return .init(date: {
             return Date(timeIntervalSince1970: 100)
         }, mainQueue: .main)

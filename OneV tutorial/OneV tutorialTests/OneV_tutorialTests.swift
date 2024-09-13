@@ -51,10 +51,10 @@ final class OneV_tutorialTests: XCTestCase {
     }
     
     func testPlayNext() async {
-        let store = await TestStore(initialState: CounterFeature.State(secret: CounterEnvironment.test.value), reducer: {
+        let store = await TestStore(initialState: CounterFeature.State(secret: CounterEnvironment.testValue.value), reducer: {
             CounterFeature()
         }) {
-            $0.counterEnvironment = .test
+            $0.counterEnvironment = .testValue
         }
         
         /**
@@ -77,10 +77,10 @@ final class OneV_tutorialTests: XCTestCase {
     }
     
     func testSlider() async {
-        let store = await TestStore(initialState: CounterFeature.State(secret: CounterEnvironment.test.value), reducer: {
+        let store = await TestStore(initialState: CounterFeature.State(secret: CounterEnvironment.testValue.value), reducer: {
             CounterFeature()
         }) {
-            $0.counterEnvironment = .test
+            $0.counterEnvironment = .testValue
         }
         
         await store.send(.setDouble(4.2)) {
@@ -96,7 +96,7 @@ final class OneV_tutorialTests: XCTestCase {
         let store = await TestStore.init(initialState: TimerFeature.State(), reducer: {
             TimerFeature()
         }) {
-            $0.timerEnvironment = TimerEnvironment.test
+            $0.timerEnvironment = TimerEnvironment.testValue
             $0.mainQueue = .main
         }
         
@@ -124,7 +124,7 @@ final class OneV_tutorialTests: XCTestCase {
         let store = await TestStore(initialState: NetworkSampleFeature.State(loading: false, text: ""), reducer: {
             NetworkSampleFeature()
         }) {
-            $0.networkSample = .test
+            $0.networkSample = .testValue
         }
         await store.send(.load) { state in
             state.loading = true
