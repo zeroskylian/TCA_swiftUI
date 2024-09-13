@@ -21,6 +21,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Text(String("Result: \(Self.store.correctCount)/\(Self.store.results.count) correct"))
+            Divider()
             TimerView(store: Self.store.scope(state: \.timer, action: \.timer))
             CounterView(store: Self.store.scope(state: \.counter, action: \.counter))
         }

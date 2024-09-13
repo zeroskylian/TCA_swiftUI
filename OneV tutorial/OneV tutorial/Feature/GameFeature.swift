@@ -17,6 +17,14 @@ struct GameFeature {
         var counter: CounterFeature.State = .init()
         
         var timer: TimerFeature.State = .init()
+        
+        var results: [GameResult] = []
+        
+        var lastTimestamp = 0.0
+        
+        var correctCount: Int {
+            return results.filter(\.correct).count
+        }
     }
     
     enum Action {
@@ -27,6 +35,15 @@ struct GameFeature {
     }
     
     var body: some Reducer<State, Action> {
+        Reduce { state, action in
+            if case let .counter(counterAction) = action, case .playNext = counterAction {
+                let result = GameResult(secret: state.counter.secret, guess: state.counter.count, timeSpent: state.timer.duration - state.lastTimestamp)
+                print("=====",result.guess, result.secret)
+                state.results.append(result)
+                state.lastTimestamp = state.timer.duration
+            }
+            return .none
+        }
         Scope(state: \.counter, action: \.counter) {
             CounterFeature()
         }
@@ -34,9 +51,20 @@ struct GameFeature {
         Scope(state: \.timer, action: \.timer) {
             TimerFeature()
         }
-        Reduce { state, action in
-            return .none
+    }
+}
+
+extension GameFeature {
+    
+    struct GameResult: Equatable {
+        let secret: Int
+        let guess: Int
+        let timeSpent: TimeInterval
+        
+        var correct: Bool {
+            return secret == guess
         }
+        
     }
 }
 

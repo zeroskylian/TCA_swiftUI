@@ -78,11 +78,14 @@ struct CounterFeature {
         }
     }
     
+    @Dependency(\.game.value) var randomValue
+}
+
+extension CounterFeature {
+    
     enum CheckResult {
         case lower, equal, higher
     }
-    
-    @Dependency(\.game.value) var randomValue
 }
 
 struct CounterEnvironment: DependencyKey {
