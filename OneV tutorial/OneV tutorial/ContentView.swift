@@ -14,8 +14,9 @@ struct ContentView: View {
         GameFeature()
             ._printChanges()
     }) {
-        $0.counterEnvironment = .live
-        $0.timerEnvironment = .liveValue
+//        $0.counterEnvironment = .live
+//        $0.timerEnvironment = .liveValue
+        $0.game = .liveValue
     }
     
     var body: some View {

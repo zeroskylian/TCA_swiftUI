@@ -66,7 +66,7 @@ struct CounterFeature {
                 return .none
             case .playNext:
                 state.count = 0
-                state.secret = self.randomValue.value
+                state.secret = self.randomValue
                 return .none
             case .setCount(let countString):
                 state.countString = countString
@@ -82,7 +82,7 @@ struct CounterFeature {
         case lower, equal, higher
     }
     
-    @Dependency(\.counterEnvironment) var randomValue
+    @Dependency(\.game.value) var randomValue
 }
 
 struct CounterEnvironment: DependencyKey {

@@ -30,7 +30,7 @@ struct TimerFeature {
             switch action {
             case .start:
                 if state.started == nil {
-                    state.started = timer.date()
+                    state.started = date()
                 }
                 return .publisher {
                     return mainQueue.timerPublisher(every: .milliseconds(100)).autoconnect().map { publish in
@@ -46,11 +46,11 @@ struct TimerFeature {
         }
     }
     
-    @Dependency(\.timerEnvironment) var timer
+    @Dependency(\.game.date) var date
     
     @Dependency(\.continuousClock) var clock
     
-    @Dependency(\.mainQueue) var mainQueue
+    @Dependency(\.game.mainQueue) var mainQueue
     
     struct TimerId: Hashable {}
 }
