@@ -89,3 +89,30 @@ var body: some Reducer<State, Action> {
     }
 }
 ```
+
+# Hook
+
+练习中记录结果并显示数据, 写法发生了变化:
+
+```swift
+
+var body: some Reducer<State, Action> {
+    Reduce { state, action in
+        if case let .counter(counterAction) = action, case .playNext = counterAction {
+                let result = GameResult(secret: state.counter.secret, guess: state.counter.count, timeSpent: state.timer.duration - state.lastTimestamp)
+                state.results.append(result)
+                state.lastTimestamp = state.timer.duration
+        }
+        return .none
+    }
+    Scope(state: \.counter, action: \.counter) {
+        CounterFeature()
+    }
+
+    Scope(state: \.timer, action: \.timer) {
+        TimerFeature()
+    }
+}
+```
+
+而且要注意 hook 一定要放上面

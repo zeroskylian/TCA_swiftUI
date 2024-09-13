@@ -38,7 +38,6 @@ struct GameFeature {
         Reduce { state, action in
             if case let .counter(counterAction) = action, case .playNext = counterAction {
                 let result = GameResult(secret: state.counter.secret, guess: state.counter.count, timeSpent: state.timer.duration - state.lastTimestamp)
-                print("=====",result.guess, result.secret)
                 state.results.append(result)
                 state.lastTimestamp = state.timer.duration
             }
