@@ -138,4 +138,31 @@ final class OneV_tutorialTests: XCTestCase {
             state.text = "Hello World"
         }
     }
+    
+    func testGame() async {
+        let store = await TestStore.init(initialState: GameFeature.State(), reducer: {
+            GameFeature()
+        }) {
+            $0.game = .testValue
+        }
+        
+        await store.send(.timer(.start)) {
+            $0.timer.started = Date(timeIntervalSince1970: 100)
+        }
+        
+        // 1
+        await scheduler.advance(by: .milliseconds(35))
+        // 2
+        await store.receive(\.timer.timeUpdated) {
+            $0.timer.duration = 0.01
+        }
+        await store.receive(\.timer.timeUpdated) {
+            $0.timer.duration = 0.02
+        }
+        await store.receive(\.timer.timeUpdated) {
+            $0.timer.duration = 0.03
+        }
+        // 3
+        await store.send(.timer(.stop))
+    }
 }

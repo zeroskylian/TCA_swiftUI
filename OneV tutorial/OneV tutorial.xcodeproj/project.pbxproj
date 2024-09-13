@@ -23,6 +23,7 @@
 		8C2EB7C92C913C58005E8207 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7C82C913C58005E8207 /* CounterView.swift */; };
 		8C2EB7CA2C914080005E8207 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7C62C913BFD005E8207 /* CounterFeature.swift */; };
 		8C6D95262C93CD0B00976D7B /* GameFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D95252C93CD0B00976D7B /* GameFeature.swift */; };
+		8C6D95272C93DA1600976D7B /* GameFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6D95252C93CD0B00976D7B /* GameFeature.swift */; };
 		8CC469592C92BDAF00D3884E /* TimerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC469582C92BDAF00D3884E /* TimerFeature.swift */; };
 		8CC4695B2C92C62900D3884E /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4695A2C92C62900D3884E /* TimerView.swift */; };
 /* End PBXBuildFile section */
@@ -325,6 +326,7 @@
 				8C187EF72C92E7E7001E90C9 /* NetworkSampleFeature.swift in Sources */,
 				8C2EB7702C913898005E8207 /* OneV_tutorialTests.swift in Sources */,
 				8C2EB7CA2C914080005E8207 /* CounterFeature.swift in Sources */,
+				8C6D95272C93DA1600976D7B /* GameFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
