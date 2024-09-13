@@ -46,7 +46,6 @@ var body: some Reducer<State, Action> {
     }
 }
 
-
 struct NetworkSampleFeatureEnvironment: DependencyKey {
 
     var loadText: () async -> Result<String, URLError>
@@ -69,5 +68,24 @@ struct NetworkSampleFeatureEnvironment: DependencyKey {
         },
         mainQueue: .main
     )
+}
+```
+
+# pullback
+
+[已废弃](<https://pointfreeco.github.io/swift-composable-architecture/0.42.0/documentation/composablearchitecture/anyreducer/pullback(state:action:environment:)>), 使用 Scope 代替
+
+```swift
+var body: some Reducer<State, Action> {
+    Scope(state: \.counter, action: \.counter) {
+        CounterFeature()
+    }
+
+    Scope(state: \.timer, action: \.timer) {
+        TimerFeature()
+    }
+    Reduce { state, action in
+        return .none
+    }
 }
 ```

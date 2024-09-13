@@ -10,32 +10,18 @@ import ComposableArchitecture
 
 struct ContentView: View {
     
-    static let counterStore = Store(initialState: CounterFeature.State(), reducer: {
-        CounterFeature()
+    static let store = Store(initialState: GameFeature.State(), reducer: {
+        GameFeature()
             ._printChanges()
     }) {
         $0.counterEnvironment = .live
-    }
-    
-    static let timerStore = Store(initialState: TimerFeature.State(started: Date()), reducer: {
-        TimerFeature()
-            ._printChanges()
-    }) {
         $0.timerEnvironment = .liveValue
-    }
-    
-    static let networkStore = Store(initialState: NetworkSampleFeature.State(loading: false, text: ""), reducer: {
-        NetworkSampleFeature()
-            ._printChanges()
-    }) {
-        $0.networkSample = .liveValue
     }
     
     var body: some View {
         VStack {
-            TimerView(store: Self.timerStore)
-            CounterView(store: Self.counterStore)
-            NetworkSampleView(store: Self.networkStore)
+            TimerView(store: Self.store.scope(state: \.timer, action: \.timer))
+            CounterView(store: Self.store.scope(state: \.counter, action: \.counter))
         }
     }
 }

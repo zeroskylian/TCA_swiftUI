@@ -19,6 +19,8 @@ struct TimerView: View {
                 Button("Start") { store.send(.start) }
                 Button("Stop") { store.send(.stop) }
             }.padding()
+        }.onAppear {
+            store.send(.start)
         }
     }
 }
