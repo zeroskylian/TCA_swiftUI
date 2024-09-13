@@ -72,6 +72,18 @@ struct NetworkSampleFeatureEnvironment: DependencyKey {
         },
         mainQueue: .main
     )
+    
+    static let test: NetworkSampleFeatureEnvironment = NetworkSampleFeatureEnvironment(
+        loadText: {
+            do {
+                try await Task.sleep(for: .seconds(1))
+                return .success("Hello World")
+            } catch {
+                return .failure(URLError(.timedOut))
+            }
+        },
+        mainQueue: .main
+    )
 }
 
 extension DependencyValues {

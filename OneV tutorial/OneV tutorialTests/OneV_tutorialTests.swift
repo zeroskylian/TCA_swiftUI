@@ -124,7 +124,7 @@ final class OneV_tutorialTests: XCTestCase {
         let store = await TestStore(initialState: NetworkSampleFeature.State(loading: false, text: ""), reducer: {
             NetworkSampleFeature()
         }) {
-            $0.networkSample = .liveValue
+            $0.networkSample = .test
         }
         await store.send(.load) { state in
             state.loading = true
