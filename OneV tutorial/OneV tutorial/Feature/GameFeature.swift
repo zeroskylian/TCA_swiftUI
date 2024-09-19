@@ -18,12 +18,12 @@ struct GameFeature {
         
         var timer: TimerFeature.State = .init()
         
-        var results: IdentifiedArrayOf<GameResult> = []
+        var results: GameResultListFeature.State = .init()
         
         var lastTimestamp = 0.0
         
         var correctCount: Int {
-            return results.filter(\.correct).count
+            return results.results.filter(\.correct).count
         }
     }
     
@@ -32,13 +32,15 @@ struct GameFeature {
         case counter(CounterFeature.Action)
         
         case timer(TimerFeature.Action)
+        
+        case listResult(GameResultListFeature.Action)
     }
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             if case let .counter(counterAction) = action, case .playNext = counterAction {
                 let result = GameResult.init(timeSpent: state.timer.duration - state.lastTimestamp, counter: state.counter)
-                state.results.append(result)
+                state.results.results.append(result)
                 state.lastTimestamp = state.timer.duration
             }
             return .none
@@ -49,6 +51,10 @@ struct GameFeature {
         
         Scope(state: \.timer, action: \.timer) {
             TimerFeature()
+        }
+        
+        Scope(state: \.results, action: \.listResult) {
+            GameResultListFeature()
         }
     }
 }

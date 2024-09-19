@@ -14,7 +14,7 @@ struct GameResultListView: View {
     
     var body: some View {
         List {
-            ForEach(store.results) { result in
+            ForEach(store.state.results) { result in
                 HStack {
                     Image(systemName: result.correct ? "checkmark.circle" : "x.circle")
                     Text("Secret: \(result.counter.secret)")

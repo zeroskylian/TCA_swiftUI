@@ -11,13 +11,11 @@ import ComposableArchitecture
 @Reducer
 struct GameResultListFeature {
     
-    typealias GameResultListState = IdentifiedArrayOf<GameFeature.GameResult>
-    
     @ObservableState
     struct State: Equatable {
         var results: IdentifiedArrayOf<GameFeature.GameResult> = []
     }
-    
+  
     enum Action {
         case remove(offset: IndexSet)
     }

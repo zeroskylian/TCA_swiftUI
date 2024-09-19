@@ -14,17 +14,18 @@ struct ContentView: View {
         GameFeature()
             ._printChanges()
     }) {
-//        $0.counterEnvironment = .live
-//        $0.timerEnvironment = .liveValue
         $0.game = .liveValue
     }
     
     var body: some View {
-        VStack {
-            Text(String("Result: \(Self.store.correctCount)/\(Self.store.results.count) correct"))
-            Divider()
-            TimerView(store: Self.store.scope(state: \.timer, action: \.timer))
-            CounterView(store: Self.store.scope(state: \.counter, action: \.counter))
+        NavigationStack {
+            GameView(store: Self.store)
+        }.toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink("Detail") {
+                    GameResultListView(store: Self.store.scope(state: \.results, action: \.listResult))
+                }
+            }
         }
     }
 }
