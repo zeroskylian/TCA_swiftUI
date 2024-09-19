@@ -11,6 +11,8 @@ import ComposableArchitecture
 @Reducer
 struct GameFeature {
     
+    typealias GameResultListState = IdentifiedArrayOf<GameResult>
+
     @ObservableState
     struct State: Equatable {
         
@@ -19,6 +21,8 @@ struct GameFeature {
         var timer: TimerFeature.State = .init()
         
         var results: GameResultListFeature.State = .init()
+        
+        @Presents var resultListState: Identified<UUID, GameResultListState>?
         
         var lastTimestamp = 0.0
         
@@ -34,6 +38,8 @@ struct GameFeature {
         case timer(TimerFeature.Action)
         
         case listResult(GameResultListFeature.Action)
+        
+        case setNavigation(UUID?)
     }
     
     var body: some Reducer<State, Action> {
@@ -44,10 +50,21 @@ struct GameFeature {
                 state.results.results.append(result)
                 state.lastTimestamp = state.timer.duration
                 return .none
+            case .setNavigation(.some(let uuid)):
+                state.resultListState = .init(state.results.results, id: uuid)
+                return .none
+            case .setNavigation(.none):
+                // alert
+                state.results.results = state.resultListState?.value ?? []
+                state.resultListState = nil
+                return .none
             default:
                 return .none
             }
         }
+//        .ifLet(\.resultListState?.id, action: \.setNavigation) {
+//            GameResultListFeature()
+//        }
         Scope(state: \.counter, action: \.counter) {
             CounterFeature()
         }
@@ -59,6 +76,10 @@ struct GameFeature {
         Scope(state: \.results, action: \.listResult) {
             GameResultListFeature()
         }
+        
+//        Scope(state: \.resultListState?.value, action: \.listResult) {
+//            GameResultListFeature()
+//        }
     }
 }
 

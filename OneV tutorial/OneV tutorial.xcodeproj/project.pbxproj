@@ -121,8 +121,8 @@
 		8C2EB75D2C913897005E8207 /* OneV tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				8C2EB7C22C913A2D005E8207 /* View */,
 				8C2EB7C12C913A27005E8207 /* Feature */,
+				8C2EB7C22C913A2D005E8207 /* View */,
 				8C2EB75E2C913897005E8207 /* OneV_tutorialApp.swift */,
 				8C2EB7602C913897005E8207 /* ContentView.swift */,
 				8C2EB7622C913898005E8207 /* Assets.xcassets */,

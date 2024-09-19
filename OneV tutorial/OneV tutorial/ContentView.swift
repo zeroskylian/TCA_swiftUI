@@ -20,12 +20,6 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             GameView(store: Self.store)
-        }.toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink("Detail") {
-                    GameResultListView(store: Self.store.scope(state: \.results, action: \.listResult))
-                }
-            }
         }
     }
 }
