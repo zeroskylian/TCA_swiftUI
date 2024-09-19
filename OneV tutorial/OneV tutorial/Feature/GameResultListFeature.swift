@@ -17,6 +17,7 @@ struct GameResultListFeature {
     }
   
     enum Action {
+        
         case remove(offset: IndexSet)
     }
     

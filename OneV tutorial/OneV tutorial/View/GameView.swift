@@ -20,20 +20,14 @@ struct GameView: View {
             Divider()
             TimerView(store: store.scope(state: \.timer, action: \.timer))
             CounterView(store: store.scope(state: \.counter, action: \.counter))
-        }.navigationTitle("Game")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Detail") {
-                        store.send(.setNavigation(resultListStateTag))
-                    }
-//                    NavigationLink("Detail", tag: resultListStateTag, selection: $store.resultListState.optional.id.sending(\.setNavigation)) {
-//                        GameResultListView(store: store.scope(state: \.results, action: \.listResult))
-//                    }
-//                    NavigationLink("Detail", value: resultListStateTag)
-//                        NavigationLink("Detail") {
-//                            GameResultListView(store: store.scope(state: \.results, action: \.listResult))
-//                        }
+        }
+        .navigationTitle("Game")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Detail") {
+                    store.send(.setNavigation)
                 }
             }
+        }
     }
 }

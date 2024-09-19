@@ -10,8 +10,6 @@ import ComposableArchitecture
 
 @Reducer
 struct GameFeature {
-    
-    typealias GameResultListState = IdentifiedArrayOf<GameResult>
 
     @ObservableState
     struct State: Equatable {
@@ -22,7 +20,8 @@ struct GameFeature {
         
         var results: GameResultListFeature.State = .init()
         
-        @Presents var resultListState: Identified<UUID, GameResultListState>?
+//        @Presents var resultListState: Identified<UUID, GameResultListFeature.State>?
+        @Presents var resultListState: GameResultListFeature.State?
         
         var lastTimestamp = 0.0
         
@@ -37,9 +36,10 @@ struct GameFeature {
         
         case timer(TimerFeature.Action)
         
-        case listResult(GameResultListFeature.Action)
+        case listResult(PresentationAction<GameResultListFeature.Action>)
         
-        case setNavigation(UUID?)
+//        case setNavigation(UUID?)
+        case setNavigation
     }
     
     var body: some Reducer<State, Action> {
@@ -50,21 +50,27 @@ struct GameFeature {
                 state.results.results.append(result)
                 state.lastTimestamp = state.timer.duration
                 return .none
-            case .setNavigation(.some(let uuid)):
-                state.resultListState = .init(state.results.results, id: uuid)
+//            case .setNavigation(.some(let uuid)):
+////                state.resultListState = .init(state.results, id: uuid)
+//                state.resultListState = .init(results: state.results.results)
+//                return .none
+//            case .setNavigation(.none):
+//                // alert
+//                state.results.results = state.resultListState?.results ?? []
+//                state.resultListState = nil
+//                return .none
+            case .setNavigation:
+                state.resultListState = .init(results: state.results.results)
                 return .none
-            case .setNavigation(.none):
-                // alert
-                state.results.results = state.resultListState?.value ?? []
-                state.resultListState = nil
+            case .listResult(.presented(.remove(offset: let offset))):
                 return .none
             default:
                 return .none
             }
         }
-//        .ifLet(\.resultListState?.id, action: \.setNavigation) {
-//            GameResultListFeature()
-//        }
+        .ifLet(\.$resultListState, action: \.listResult) {
+            GameResultListFeature()
+        }
         Scope(state: \.counter, action: \.counter) {
             CounterFeature()
         }
@@ -73,11 +79,7 @@ struct GameFeature {
             TimerFeature()
         }
         
-        Scope(state: \.results, action: \.listResult) {
-            GameResultListFeature()
-        }
-        
-//        Scope(state: \.resultListState?.value, action: \.listResult) {
+//        Scope(state: \.results, action: \.listResult) {
 //            GameResultListFeature()
 //        }
     }
