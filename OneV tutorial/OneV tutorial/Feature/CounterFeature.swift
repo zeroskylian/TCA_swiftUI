@@ -12,7 +12,9 @@ import ComposableArchitecture
 struct CounterFeature {
     
     @ObservableState
-    struct State: Equatable {
+    struct State: Equatable, Identifiable {
+        
+        var id: UUID = UUID()
         
         let name: String = "Counter"
         

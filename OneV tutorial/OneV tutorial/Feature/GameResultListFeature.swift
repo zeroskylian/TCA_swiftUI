@@ -9,34 +9,26 @@ import Foundation
 import ComposableArchitecture
 
 @Reducer
-struct GameResultFeature {
+struct GameResultListFeature {
+    
+    typealias GameResultListState = IdentifiedArrayOf<GameFeature.GameResult>
     
     @ObservableState
     struct State: Equatable {
-        var results: [GameResult] = []
+        var results: IdentifiedArrayOf<GameFeature.GameResult> = []
     }
     
     enum Action {
-       case addResult(GameResult)
+        case remove(offset: IndexSet)
     }
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
-            case .addResult(let result):
-                state.results.append(result)
+            case .remove(offset: let offset):
+                state.results.remove(atOffsets: offset)
                 return .none
             }
         }
-    }
-}
-
-
-extension GameResultFeature {
-    
-    struct GameResult: Equatable {
-      let secret: Int
-      let guess: Int
-      let timeSpent: TimeInterval
     }
 }

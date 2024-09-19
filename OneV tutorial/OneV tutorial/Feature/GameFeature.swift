@@ -18,7 +18,7 @@ struct GameFeature {
         
         var timer: TimerFeature.State = .init()
         
-        var results: [GameResult] = []
+        var results: IdentifiedArrayOf<GameResult> = []
         
         var lastTimestamp = 0.0
         
@@ -37,7 +37,7 @@ struct GameFeature {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             if case let .counter(counterAction) = action, case .playNext = counterAction {
-                let result = GameResult(secret: state.counter.secret, guess: state.counter.count, timeSpent: state.timer.duration - state.lastTimestamp)
+                let result = GameResult.init(timeSpent: state.timer.duration - state.lastTimestamp, counter: state.counter)
                 state.results.append(result)
                 state.lastTimestamp = state.timer.duration
             }
@@ -55,15 +55,17 @@ struct GameFeature {
 
 extension GameFeature {
     
-    struct GameResult: Equatable {
-        let secret: Int
-        let guess: Int
+    struct GameResult: Equatable, Identifiable {
+        
         let timeSpent: TimeInterval
         
+        let counter: CounterFeature.State
+        
         var correct: Bool {
-            return secret == guess
+            return counter.secret == counter.count
         }
         
+        var id: UUID { counter.id }
     }
 }
 
