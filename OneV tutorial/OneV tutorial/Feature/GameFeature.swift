@@ -38,12 +38,15 @@ struct GameFeature {
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
-            if case let .counter(counterAction) = action, case .playNext = counterAction {
-                let result = GameResult.init(timeSpent: state.timer.duration - state.lastTimestamp, counter: state.counter)
+            switch action {
+            case .counter(.playNext):
+                let result = GameResult(counter: state.counter, timeSpent: state.timer.duration - state.lastTimestamp)
                 state.results.results.append(result)
                 state.lastTimestamp = state.timer.duration
+                return .none
+            default:
+                return .none
             }
-            return .none
         }
         Scope(state: \.counter, action: \.counter) {
             CounterFeature()
@@ -63,9 +66,9 @@ extension GameFeature {
     
     struct GameResult: Equatable, Identifiable {
         
-        let timeSpent: TimeInterval
-        
         let counter: CounterFeature.State
+        
+        let timeSpent: TimeInterval
         
         var correct: Bool {
             return counter.secret == counter.count
@@ -77,14 +80,17 @@ extension GameFeature {
 
 struct GameEnvironment: DependencyKey {
     
-    static var liveValue: GameEnvironment = GameEnvironment(value: Int.random(in: -100 ... 100), date: Date.init, mainQueue: .main)
+    static var liveValue: GameEnvironment = GameEnvironment(value: Int.random(in: -100 ... 100), uuid: UUID.init, date: Date.init, mainQueue: .main)
     
-    static var testValue: GameEnvironment = GameEnvironment(value: 6, date: {
+    static var testValue: GameEnvironment = GameEnvironment(value: 6, uuid: UUID.init, date: {
         return Date(timeIntervalSince1970: 100)
     }, mainQueue: .main)
     
     /// counter 用
     let value: Int
+    
+    /// 生成 UUID
+    let uuid: () -> UUID
     
     /// timer 用
     var date: () -> Date

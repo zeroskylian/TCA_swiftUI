@@ -69,6 +69,7 @@ struct CounterFeature {
             case .playNext:
                 state.count = 0
                 state.secret = self.randomValue
+                state.id = self.uuid()
                 return .none
             case .setCount(let countString):
                 state.countString = countString
@@ -81,6 +82,7 @@ struct CounterFeature {
     }
     
     @Dependency(\.game.value) var randomValue
+    @Dependency(\.game.uuid) var uuid
 }
 
 extension CounterFeature {
