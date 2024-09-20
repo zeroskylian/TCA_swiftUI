@@ -15,6 +15,7 @@
 		8C2EB7B02C9138FE005E8207 /* Official_tutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7AF2C9138FE005E8207 /* Official_tutorialUITests.swift */; };
 		8C2EB7B22C9138FE005E8207 /* Official_tutorialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7B12C9138FE005E8207 /* Official_tutorialUITestsLaunchTests.swift */; };
 		8C2EB7C52C913B48005E8207 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 8C2EB7C42C913B48005E8207 /* ComposableArchitecture */; };
+		8C52E0F62C9CFED90050E584 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C52E0F52C9CFED90050E584 /* CounterFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		8C2EB7AB2C9138FE005E8207 /* Official tutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Official tutorialUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2EB7AF2C9138FE005E8207 /* Official_tutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Official_tutorialUITests.swift; sourceTree = "<group>"; };
 		8C2EB7B12C9138FE005E8207 /* Official_tutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Official_tutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8C52E0F52C9CFED90050E584 /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		8C2EB7932C9138FD005E8207 /* Official tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				8C52E0F42C9CFE910050E584 /* Feature */,
 				8C2EB7942C9138FD005E8207 /* Official_tutorialApp.swift */,
 				8C2EB7962C9138FD005E8207 /* ContentView.swift */,
 				8C2EB7982C9138FE005E8207 /* Assets.xcassets */,
@@ -127,6 +130,14 @@
 				8C2EB7B12C9138FE005E8207 /* Official_tutorialUITestsLaunchTests.swift */,
 			);
 			path = "Official tutorialUITests";
+			sourceTree = "<group>";
+		};
+		8C52E0F42C9CFE910050E584 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				8C52E0F52C9CFED90050E584 /* CounterFeature.swift */,
+			);
+			path = Feature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C52E0F62C9CFED90050E584 /* CounterFeature.swift in Sources */,
 				8C2EB7972C9138FD005E8207 /* ContentView.swift in Sources */,
 				8C2EB7952C9138FD005E8207 /* Official_tutorialApp.swift in Sources */,
 			);
