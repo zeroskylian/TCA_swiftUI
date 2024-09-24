@@ -16,6 +16,7 @@
 		8C2EB7B22C9138FE005E8207 /* Official_tutorialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7B12C9138FE005E8207 /* Official_tutorialUITestsLaunchTests.swift */; };
 		8C2EB7C52C913B48005E8207 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 8C2EB7C42C913B48005E8207 /* ComposableArchitecture */; };
 		8C52E0F62C9CFED90050E584 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C52E0F52C9CFED90050E584 /* CounterFeature.swift */; };
+		8CC5682F2CA29B5300899F41 /* CounterFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5682E2CA29B5300899F41 /* CounterFeatureTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		8C2EB7AF2C9138FE005E8207 /* Official_tutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Official_tutorialUITests.swift; sourceTree = "<group>"; };
 		8C2EB7B12C9138FE005E8207 /* Official_tutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Official_tutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8C52E0F52C9CFED90050E584 /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
+		8CC5682E2CA29B5300899F41 /* CounterFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeatureTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				8C2EB7A52C9138FE005E8207 /* Official_tutorialTests.swift */,
+				8CC5682E2CA29B5300899F41 /* CounterFeatureTests.swift */,
 			);
 			path = "Official tutorialTests";
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C2EB7A62C9138FE005E8207 /* Official_tutorialTests.swift in Sources */,
+				8CC5682F2CA29B5300899F41 /* CounterFeatureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
