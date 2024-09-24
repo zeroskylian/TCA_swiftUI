@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C26A1382CA28B0500C8FC2E /* Official-tutorial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Official-tutorial-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8C2EB7912C9138FD005E8207 /* Official tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Official tutorial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2EB7942C9138FD005E8207 /* Official_tutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Official_tutorialApp.swift; sourceTree = "<group>"; };
 		8C2EB7962C9138FD005E8207 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		8C2EB7932C9138FD005E8207 /* Official tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				8C26A1382CA28B0500C8FC2E /* Official-tutorial-Info.plist */,
 				8C52E0F42C9CFE910050E584 /* Feature */,
 				8C2EB7942C9138FD005E8207 /* Official_tutorialApp.swift */,
 				8C2EB7962C9138FD005E8207 /* ContentView.swift */,
@@ -445,6 +447,7 @@
 				DEVELOPMENT_TEAM = N2V9J3UTZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Official-tutorial-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -474,6 +477,7 @@
 				DEVELOPMENT_TEAM = N2V9J3UTZQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Official-tutorial-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
