@@ -11,8 +11,10 @@ import ComposableArchitecture
 @Reducer
 struct CounterFeature {
     
+    @Dependency(\.continuousClock) var clock
+    
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var count = 0
         var fact: String?
         var isLoading = false
@@ -55,11 +57,10 @@ struct CounterFeature {
                 state.isLoading = false
                 return .none
             case .toggleTimerButtonTapped:
-                if !state.isTimerRunning {
-                    state.isTimerRunning.toggle()
+                state.isTimerRunning.toggle()
+                if state.isTimerRunning {
                     return .run { send in
-                        while true {
-                            try await Task.sleep(for: .seconds(1))
+                        for await _ in self.clock.timer(interval: .seconds(1)) {
                             await send(.timerTick)
                         }
                     }.cancellable(id: CancelID.timer)

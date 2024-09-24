@@ -34,16 +34,26 @@ final class CounterFeatureTests: XCTestCase {
     }
     
     func testTimer() async {
+        let clock = TestClock()
         let store = await TestStore(initialState: CounterFeature.State()) {
             CounterFeature()
+        } withDependencies: {
+            $0.continuousClock = clock
         }
-
+        
         // TCA 在对应 Effect 测试时，会对还未被 receive 的 action 以及还在运行的 Effect 进行断言
         await store.send(.toggleTimerButtonTapped) {
             $0.isTimerRunning = true
         }
-        await store.receive(\.timerTick, timeout: .seconds(2)) {
+        // 使时间前进 x 秒
+        await clock.advance(by: .seconds(2))
+        
+        // 正确的话前进 x 秒就要按照你的 Reducer 调用几次 action, 这里如果只进行一次, 测试会失败哦
+        await store.receive(\.timerTick) {
             $0.count = 1
+        }
+        await store.receive(\.timerTick) {
+            $0.count = 2
         }
         await store.send(.toggleTimerButtonTapped) {
             $0.isTimerRunning = false
