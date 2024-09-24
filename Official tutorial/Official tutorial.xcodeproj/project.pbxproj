@@ -17,6 +17,9 @@
 		8C2EB7C52C913B48005E8207 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 8C2EB7C42C913B48005E8207 /* ComposableArchitecture */; };
 		8C52E0F62C9CFED90050E584 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C52E0F52C9CFED90050E584 /* CounterFeature.swift */; };
 		8CC5682F2CA29B5300899F41 /* CounterFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5682E2CA29B5300899F41 /* CounterFeatureTests.swift */; };
+		8CC568312CA2A7D800899F41 /* NumberFactClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC568302CA2A7D800899F41 /* NumberFactClient.swift */; };
+		8CC568322CA2AEBD00899F41 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C52E0F52C9CFED90050E584 /* CounterFeature.swift */; };
+		8CC568332CA2AEC100899F41 /* NumberFactClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC568302CA2A7D800899F41 /* NumberFactClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,7 @@
 		8C2EB7B12C9138FE005E8207 /* Official_tutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Official_tutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8C52E0F52C9CFED90050E584 /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
 		8CC5682E2CA29B5300899F41 /* CounterFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeatureTests.swift; sourceTree = "<group>"; };
+		8CC568302CA2A7D800899F41 /* NumberFactClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFactClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				8C52E0F52C9CFED90050E584 /* CounterFeature.swift */,
+				8CC568302CA2A7D800899F41 /* NumberFactClient.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				8C52E0F62C9CFED90050E584 /* CounterFeature.swift in Sources */,
 				8C2EB7972C9138FD005E8207 /* ContentView.swift in Sources */,
 				8C2EB7952C9138FD005E8207 /* Official_tutorialApp.swift in Sources */,
+				8CC568312CA2A7D800899F41 /* NumberFactClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,8 +297,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC568322CA2AEBD00899F41 /* CounterFeature.swift in Sources */,
 				8C2EB7A62C9138FE005E8207 /* Official_tutorialTests.swift in Sources */,
 				8CC5682F2CA29B5300899F41 /* CounterFeatureTests.swift in Sources */,
+				8CC568332CA2AEC100899F41 /* NumberFactClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

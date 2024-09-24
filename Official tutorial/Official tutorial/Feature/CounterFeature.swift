@@ -13,6 +13,8 @@ struct CounterFeature {
     
     @Dependency(\.continuousClock) var clock
     
+    @Dependency(\.numberFact) var numberFact
+    
     @ObservableState
     struct State: Equatable {
         var count = 0
@@ -47,9 +49,7 @@ struct CounterFeature {
                 state.fact = nil
                 state.isLoading = true
                 return .run { [count = state.count] send in
-                    let (data, _) = try await URLSession.shared
-                        .data(from: URL(string: "http://numbersapi.com/\(count)")!)
-                    let fact = String(decoding: data, as: UTF8.self)
+                    let fact = try await self.numberFact.fetch(count)
                     await send(.factResponse(fact))
                 }
             case .factResponse(let fact):
