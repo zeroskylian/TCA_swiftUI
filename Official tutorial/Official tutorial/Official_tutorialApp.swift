@@ -11,13 +11,21 @@ import ComposableArchitecture
 @main
 struct Official_tutorialApp: App {
     
-    static let store = Store(initialState: CounterFeature.State()) {
-        CounterFeature()._printChanges()
+    static let store = Store(initialState: AppFeature.State()) {
+        AppFeature()._printChanges()
     }
     
     var body: some Scene {
         WindowGroup {
-            CounterView(store: Self.store)
+            TabView {
+                CounterView(store: Self.store.scope(state: \.tab1, action: \.tab1)).tabItem {
+                    Text("Counter 1")
+                }
+                CounterView(store: Self.store.scope(state: \.tab2, action: \.tab2)).tabItem {
+                    Text("Counter 2")
+                }
+            }
+           
         }
     }
 }
