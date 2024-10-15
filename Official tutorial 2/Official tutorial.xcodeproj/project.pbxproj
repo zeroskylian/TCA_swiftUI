@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C0AE2DA2CBE1CBE00099BBA /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0AE2D92CBE1CBE00099BBA /* AddContactView.swift */; };
 		8C2EB7952C9138FD005E8207 /* Official_tutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EB7942C9138FD005E8207 /* Official_tutorialApp.swift */; };
 		8C2EB7992C9138FE005E8207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2EB7982C9138FE005E8207 /* Assets.xcassets */; };
 		8C2EB79C2C9138FE005E8207 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C2EB79B2C9138FE005E8207 /* Preview Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C0AE2D92CBE1CBE00099BBA /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
 		8C26A1382CA28B0500C8FC2E /* Official-tutorial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Official-tutorial-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8C2EB7912C9138FD005E8207 /* Official tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Official tutorial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2EB7942C9138FD005E8207 /* Official_tutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Official_tutorialApp.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				8C52E0F42C9CFE910050E584 /* Feature */,
 				8C2EB7942C9138FD005E8207 /* Official_tutorialApp.swift */,
 				8C42BBE52CBD46140013AC97 /* ContactsView.swift */,
+				8C0AE2D92CBE1CBE00099BBA /* AddContactView.swift */,
 				8C2EB7982C9138FE005E8207 /* Assets.xcassets */,
 				8C2EB79A2C9138FE005E8207 /* Preview Content */,
 			);
@@ -296,6 +299,7 @@
 				8CC4902E2CBD3E0200C38623 /* AppFeature.swift in Sources */,
 				8CC375842CBD46E600BA284E /* AddContactFeature.swift in Sources */,
 				8C2EB7952C9138FD005E8207 /* Official_tutorialApp.swift in Sources */,
+				8C0AE2DA2CBE1CBE00099BBA /* AddContactView.swift in Sources */,
 				8CC490332CBD44EF00C38623 /* ContactsFeature.swift in Sources */,
 				8C42BBE62CBD46140013AC97 /* ContactsView.swift in Sources */,
 			);

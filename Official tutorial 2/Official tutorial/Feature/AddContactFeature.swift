@@ -28,7 +28,7 @@ struct AddContactFeature {
       case .saveButtonTapped:
         return .none
         
-      case let .setName(name):
+      case .setName(let name):
         state.contact.name = name
         return .none
       }
