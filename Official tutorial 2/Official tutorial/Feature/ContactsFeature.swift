@@ -25,6 +25,7 @@ struct ContactsFeature {
     }
     
     enum Action {
+        
         case addButtonTapped
         
         case addContact(PresentationAction<AddContactFeature.Action>)
@@ -38,16 +39,10 @@ struct ContactsFeature {
                     contact: Contact(id: UUID(), name: "")
                 )
                 return .none
-            case .addContact(.presented(.cancelButtonTapped)):
-                state.addContact = nil
-                return .none
-            case .addContact(.presented(.saveButtonTapped)):
-                guard let contact = state.addContact?.contact else { return .none }
+            case .addContact(.presented(.delegate(.saveContact(let contact)))):
                 state.contacts.append(contact)
-                state.addContact = nil
                 return .none
             case .addContact:
-                print("addContact=====")
                 return .none
             }
         }.ifLet(\.$addContact, action: \.addContact) {
