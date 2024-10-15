@@ -17,7 +17,7 @@ struct Official_tutorialApp: App {
     
     var body: some Scene {
         WindowGroup {
-            
+            ContactsView(store: Self.store)
         }
     }
 }
