@@ -26,7 +26,7 @@ struct Official_tutorialApp: App {
 /// 这里代码用于解释 ContactsFeature 中 addContact 为什么会自动变为 nil,
 /// 系统的 sheet isPresented: 在 dismss 时会将关联值变为 false
 /// 系统的 sheet item: Binding<Item?>  在 dismss 时会将关联值变为 nil
-///  同理, ContactsFeature 使用的是 ComposableArchitecture 封装的 sheet, 也会将值变为 nil
+/// 同理, ContactsFeature 使用的是 ComposableArchitecture 封装的 sheet, 也会将值变为 nil
 struct DismissingView1: View {
     
     @Environment(\.dismiss) var dismiss
