@@ -9,7 +9,9 @@ import Foundation
 import ComposableArchitecture
 
 struct Contact: Equatable, Identifiable {
+    
     let id: UUID
+    
     var name: String
 }
 
@@ -43,7 +45,7 @@ struct ContactsFeature {
             case .addButtonTapped:
                 state.destination = .addContact(
                     AddContactFeature.State(
-                        contact: Contact(id: UUID(), name: "")
+                        contact: Contact(id: self.uuid(), name: "")
                     )
                 )
                 return .none
@@ -69,6 +71,8 @@ struct ContactsFeature {
             }
         }.ifLet(\.$destination, action: \.destination)
     }
+    
+    @Dependency(\.uuid) var uuid
 }
 
 
@@ -76,7 +80,9 @@ extension ContactsFeature {
     /// 拆分的原因是你的目标是在同一时段只能有一个弹窗, 但是之前的场景可能在同时弹出两个
     @Reducer
     enum Destination {
+        
         case addContact(AddContactFeature)
+        
         case alert(AlertState<ContactsFeature.Action.Alert>)
     }
 }

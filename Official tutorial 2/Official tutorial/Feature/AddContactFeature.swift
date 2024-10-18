@@ -24,6 +24,7 @@ struct AddContactFeature {
         /// 这里的目的是区分哪些需要父 Reducer响应的 Action, 哪些是自身的
         case delegate(Delegate)
         
+        @CasePathable
         enum Delegate: Equatable {
             case saveContact(Contact)
         }

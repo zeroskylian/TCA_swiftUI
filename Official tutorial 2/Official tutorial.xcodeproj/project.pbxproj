@@ -20,10 +20,9 @@
 		8CC375852CBD46E600BA284E /* AddContactFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC375832CBD46E600BA284E /* AddContactFeature.swift */; };
 		8CC4902D2CBD3E0200C38623 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4902C2CBD3E0200C38623 /* AppFeature.swift */; };
 		8CC4902E2CBD3E0200C38623 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4902C2CBD3E0200C38623 /* AppFeature.swift */; };
-		8CC490302CBD419400C38623 /* AppFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4902F2CBD419400C38623 /* AppFeatureTests.swift */; };
+		8CC490302CBD419400C38623 /* ContactsFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC4902F2CBD419400C38623 /* ContactsFeatureTests.swift */; };
 		8CC490322CBD44EF00C38623 /* ContactsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC490312CBD44EF00C38623 /* ContactsFeature.swift */; };
 		8CC490332CBD44EF00C38623 /* ContactsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC490312CBD44EF00C38623 /* ContactsFeature.swift */; };
-		8CC5682F2CA29B5300899F41 /* CounterFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5682E2CA29B5300899F41 /* CounterFeatureTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +57,8 @@
 		8C42BBE52CBD46140013AC97 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		8CC375832CBD46E600BA284E /* AddContactFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactFeature.swift; sourceTree = "<group>"; };
 		8CC4902C2CBD3E0200C38623 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
-		8CC4902F2CBD419400C38623 /* AppFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeatureTests.swift; sourceTree = "<group>"; };
+		8CC4902F2CBD419400C38623 /* ContactsFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsFeatureTests.swift; sourceTree = "<group>"; };
 		8CC490312CBD44EF00C38623 /* ContactsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsFeature.swift; sourceTree = "<group>"; };
-		8CC5682E2CA29B5300899F41 /* CounterFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeatureTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				8C2EB7A52C9138FE005E8207 /* Official_tutorialTests.swift */,
-				8CC4902F2CBD419400C38623 /* AppFeatureTests.swift */,
-				8CC5682E2CA29B5300899F41 /* CounterFeatureTests.swift */,
+				8CC4902F2CBD419400C38623 /* ContactsFeatureTests.swift */,
 			);
 			path = "Official tutorialTests";
 			sourceTree = "<group>";
@@ -311,9 +308,8 @@
 			files = (
 				8CC4902D2CBD3E0200C38623 /* AppFeature.swift in Sources */,
 				8CC375852CBD46E600BA284E /* AddContactFeature.swift in Sources */,
-				8CC490302CBD419400C38623 /* AppFeatureTests.swift in Sources */,
+				8CC490302CBD419400C38623 /* ContactsFeatureTests.swift in Sources */,
 				8C2EB7A62C9138FE005E8207 /* Official_tutorialTests.swift in Sources */,
-				8CC5682F2CA29B5300899F41 /* CounterFeatureTests.swift in Sources */,
 				8CC490322CBD44EF00C38623 /* ContactsFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,7 +641,7 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.14.0;
+				minimumVersion = 1.15.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
