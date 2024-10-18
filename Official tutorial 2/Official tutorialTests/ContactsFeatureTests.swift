@@ -38,18 +38,18 @@ struct ContactsFeatureTests {
         }
         
         await store.send(\.destination.addContact.saveButtonTapped)
-//        
-//        await store.receive(
-//            \.destination.addContact.delegate.saveContact,
-//             Contact(id: UUID(0), name: "Blob Jr.")
-//        ) {
-//            $0.contacts = [
-//                Contact(id: UUID(0), name: "Blob Jr.")
-//            ]
-//        }
-//        
-//        await store.receive(\.destination.dismiss) {
-//            $0.destination = nil
-//        }
+        
+        await store.receive(
+            \.destination.addContact.delegate.saveContact,
+             Contact(id: UUID(0), name: "Blob Jr.")
+        ) {
+            $0.contacts = [
+                Contact(id: UUID(0), name: "Blob Jr.")
+            ]
+        }
+        
+        await store.receive(\.destination.dismiss) {
+            $0.destination = nil
+        }
     }
 }
