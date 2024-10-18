@@ -50,15 +50,7 @@ struct ContactsFeature {
                 )
                 return .none
             case .deleteButtonTapped(id: let id):
-                state.destination = .alert(
-                    AlertState {
-                        TextState("Are you sure?")
-                    } actions: {
-                        ButtonState(role: .destructive, action: .confirmDeletion(id: id)) {
-                            TextState("Delete")
-                        }
-                    }
-                )
+                state.destination = .alert(.deleteConfirmation(id: id))
                 return .none
             case .destination(.presented(.addContact(.delegate(.saveContact(let contact))))):
                 state.contacts.append(contact)
@@ -88,3 +80,16 @@ extension ContactsFeature {
 }
 
 extension ContactsFeature.Destination.State: Equatable {}
+
+extension AlertState where Action == ContactsFeature.Action.Alert {
+    
+    static func deleteConfirmation(id: UUID) -> Self {
+        Self {
+            TextState("Are you sure?")
+        } actions: {
+            ButtonState(role: .destructive, action: .confirmDeletion(id: id)) {
+                TextState("Delete")
+            }
+        }
+    }
+}
