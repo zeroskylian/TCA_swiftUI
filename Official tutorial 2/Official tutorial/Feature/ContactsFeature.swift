@@ -21,9 +21,14 @@ struct ContactsFeature {
     @ObservableState
     struct State: Equatable {
         
-        var contacts: IdentifiedArrayOf<Contact> = []
+        var contacts: IdentifiedArrayOf<Contact> = [
+            .init(id: UUID.init(22), name: "BB")
+        ]
         
         @Presents var destination: Destination.State?
+        
+        var path = StackState<ContactDetailFeature.State>()
+        
     }
     
     enum Action {
@@ -33,6 +38,8 @@ struct ContactsFeature {
         case deleteButtonTapped(id: Contact.ID)
         
         case destination(PresentationAction<Destination.Action>)
+        
+        case path(StackAction<ContactDetailFeature.State, ContactDetailFeature.Action>)
         
         enum Alert: Equatable {
             case confirmDeletion(id: Contact.ID)
@@ -60,8 +67,18 @@ struct ContactsFeature {
                 return .none
             case .destination:
                 return .none
+            case let .path(.element(id: id, action: .delegate(.confirmDeletion))):
+                guard let detailState = state.path[id: id] else { return .none }
+                state.contacts.remove(id: detailState.contact.id)
+                return .none
+            case .path:
+                return .none
             }
-        }.ifLet(\.$destination, action: \.destination)
+        }
+        .ifLet(\.$destination, action: \.destination)
+        .forEach(\.path, action: \.path) {
+            ContactDetailFeature()
+        }
     }
     
     @Dependency(\.uuid) var uuid
@@ -69,6 +86,7 @@ struct ContactsFeature {
 
 
 extension ContactsFeature {
+    
     /// 拆分的原因是你的目标是在同一时段只能有一个弹窗, 但是之前的场景可能在同时弹出两个
     @Reducer
     enum Destination {
