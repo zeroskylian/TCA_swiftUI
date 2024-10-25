@@ -19,7 +19,7 @@ struct Contact: Equatable, Identifiable {
 struct ContactsFeature {
     
     @ObservableState
-    struct State: Equatable {
+    struct State {
         
         var contacts: IdentifiedArrayOf<Contact> = [
             .init(id: UUID.init(0), name: "BB")
@@ -27,8 +27,7 @@ struct ContactsFeature {
         
         @Presents var destination: Destination.State?
         
-        var path = StackState<ContactDetailFeature.State>()
-        
+        var path = StackState<Path.State>()
     }
     
     enum Action {
@@ -39,7 +38,9 @@ struct ContactsFeature {
         
         case destination(PresentationAction<Destination.Action>)
         
-        case path(StackAction<ContactDetailFeature.State, ContactDetailFeature.Action>)
+        case path(StackActionOf<Path>)
+        
+        case addButtonTappedStack
         
         enum Alert: Equatable {
             case confirmDeletion(id: Contact.ID)
@@ -67,18 +68,20 @@ struct ContactsFeature {
                 return .none
             case .destination:
                 return .none
-            case let .path(.element(id: id, action: .delegate(.confirmDeletion))):
-                guard let detailState = state.path[id: id] else { return .none }
-                state.contacts.remove(id: detailState.contact.id)
+            case let .path(.element(id: id, action: .addItem(.delegate(.saveContact(contact))))):
+                state.contacts.append(contact)
+                // 这行和 Presented在外部 dismiss 是一样的, 比较麻烦
+                // state.path.pop(from: id)
+                return .none
+            case .addButtonTappedStack:
+                state.path.append(.addItem(AddContactFeature.State(contact: Contact(id: self.uuid(), name: ""))))
                 return .none
             case .path:
                 return .none
             }
         }
         .ifLet(\.$destination, action: \.destination)
-        .forEach(\.path, action: \.path) {
-            ContactDetailFeature()
-        }
+        .forEach(\.path, action: \.path)
     }
     
     @Dependency(\.uuid) var uuid
@@ -95,6 +98,15 @@ extension ContactsFeature {
         
         case alert(AlertState<ContactsFeature.Action.Alert>)
     }
+    
+    @Reducer
+    enum Path {
+        
+        case addItem(AddContactFeature)
+        
+        case detailItem(ContactDetailFeature)
+    }
+    
 }
 
 extension ContactsFeature.Destination.State: Equatable {}

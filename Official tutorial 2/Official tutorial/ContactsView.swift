@@ -14,21 +14,28 @@ struct ContactsView: View {
     
     var body: some View {
         NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
-            List {
-                ForEach(store.contacts) { contact in
-                    NavigationLink(state: ContactDetailFeature.State(contact: contact)) {
-                        HStack {
-                            Text(contact.name)
-                            Spacer()
-                            Button {
-                                store.send(.deleteButtonTapped(id: contact.id))
-                            } label: {
-                                Image(systemName: "trash")
-                                    .foregroundColor(.red)
+            VStack {
+                Button("Add") {
+                    // 这种方式是推荐的 使用 action 方式跳转
+                    store.send(.addButtonTappedStack)
+                }
+                List {
+                    ForEach(store.contacts) { contact in
+                        // 这种方式是最基础的, 但是很麻烦 而且 不能模块化, 耦合很严重
+                        NavigationLink(state: ContactsFeature.Path.State.detailItem(ContactDetailFeature.State(contact: contact))) {
+                            HStack {
+                                Text(contact.name)
+                                Spacer()
+                                Button {
+                                    store.send(.deleteButtonTapped(id: contact.id))
+                                } label: {
+                                    Image(systemName: "trash")
+                                        .foregroundColor(.red)
+                                }
                             }
                         }
+                        .buttonStyle(.borderless)
                     }
-                    .buttonStyle(.borderless)
                 }
             }
             .navigationTitle("Contacts")
@@ -42,7 +49,12 @@ struct ContactsView: View {
                 }
             }
         } destination: { store in
-            ContactDetailView(store: store)
+            switch store.case {
+            case .addItem(let store):
+                AddContactView(store: store)
+            case .detailItem(let store):
+                ContactDetailView(store: store)
+            }
         }
         .sheet(
             item: $store.scope(state: \.destination?.addContact, action: \.destination.addContact)
@@ -53,5 +65,4 @@ struct ContactsView: View {
         }
         .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
     }
-    
 }
