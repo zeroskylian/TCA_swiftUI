@@ -19,7 +19,7 @@ struct Contact: Equatable, Identifiable {
 struct ContactsFeature {
     
     @ObservableState
-    struct State {
+    struct State: Equatable {
         
         var contacts: IdentifiedArrayOf<Contact> = [
             .init(id: UUID.init(0), name: "BB")
@@ -68,7 +68,7 @@ struct ContactsFeature {
                 return .none
             case .destination:
                 return .none
-            case let .path(.element(id: id, action: .addItem(.delegate(.saveContact(contact))))):
+            case let .path(.element(id: _, action: .addItem(.delegate(.saveContact(contact))))):
                 state.contacts.append(contact)
                 // 这行和 Presented在外部 dismiss 是一样的, 比较麻烦
                 // state.path.pop(from: id)
@@ -110,6 +110,9 @@ extension ContactsFeature {
 }
 
 extension ContactsFeature.Destination.State: Equatable {}
+
+/// 这里别忘了, 给他增加 Equatable
+extension ContactsFeature.Path.State: Equatable {}
 
 extension AlertState where Action == ContactsFeature.Action.Alert {
     
